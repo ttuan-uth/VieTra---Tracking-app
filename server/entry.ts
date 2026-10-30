@@ -1,14 +1,11 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
-import { createApp } from '../server/app'
+import { createApp } from './app'
 
 type App = ReturnType<typeof createApp>
 
 /**
- * Single Vercel Function for the API. `vercel.json` rewrites `/api/*`
- * to `/api?path=...`; the Express app reconstructs the original URL.
- *
- * Keep the import static so Vercel bundles `server/*`, but create the app
- * inside the handler so missing configuration returns a readable JSON error.
+ * Vercel Function entry. `npm run build:api` bundles this file into
+ * `api/index.js`, so Vercel does not have to resolve imports outside `api/`.
  */
 let app: App | null = null
 

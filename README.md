@@ -55,7 +55,7 @@ Trang chỉ tồn tại khi server và tunnel còn chạy; không nên dùng cá
 
 ## Deploy lên Vercel — link cố định
 
-Ứng dụng gồm frontend Vite và API serverless trong `api/index.ts` (Express + Turso). Vercel build frontend ra `dist` và deploy API cùng project. Cấu hình build và rewrite toàn bộ `/api/*` về một function nằm trong `vercel.json`.
+Ứng dụng gồm frontend Vite và API serverless trong `api/index.js`. File này được đóng gói từ `server/entry.ts` bằng `npm run build:api` (chạy tự động trong `npm run build`), nên deployment Vercel không phụ thuộc vào việc resolve các module nằm ngoài thư mục `api/`. `vercel.json` cấu hình build và rewrite `/api/*` về function này.
 
 ### 1. Chuẩn bị Turso và biến môi trường
 
@@ -297,7 +297,7 @@ Nút **Đặt lại dữ liệu mô phỏng** chỉ hiện với admin và xoá 
 
 ## Backend, đăng nhập và phân quyền
 
-- **Stack:** Express 4 chạy trong Vercel Function `api/index.ts`; database libSQL/Turso; JWT HS256 trong cookie HttpOnly 7 ngày; mật khẩu hash bằng bcrypt; validate bằng Zod. Rewrite toàn bộ `/api/*` về `/api?path=...` giữ API dưới một function và chuyển path gốc cho Express.
+- **Stack:** Express 4 được bundle vào Vercel Function `api/index.js` từ `server/entry.ts`; database libSQL/Turso; JWT HS256 trong cookie HttpOnly 7 ngày; mật khẩu hash bằng bcrypt; validate bằng Zod. Rewrite toàn bộ `/api/*` về `/api?path=...` giữ API dưới một function và chuyển path gốc cho Express.
 - **Database cục bộ:** `.data/vietra.db` (libSQL file), tự tạo schema/seed khi chạy `npm run db:init` hoặc request API đầu tiên.
 - **Database production:** Turso qua `TURSO_DATABASE_URL` và `TURSO_AUTH_TOKEN`. Không có API key nào trong frontend.
 - **Phân quyền:**
@@ -371,8 +371,9 @@ Nút **Đặt lại dữ liệu mô phỏng** chỉ hiện với admin và xoá 
 
 ```
 api/
-  index.ts      entry Vercel Function, nhận rewrite /api?path=... và chuyển vào Express app
+  index.js      bundle Vercel Function, được tạo bởi npm run build:api; không sửa tay
 server/
+  entry.ts      entry nguồn cho bundle, nhận rewrite /api?path=...
   app.ts        route Express, auth, state, booking, shipment, scenario, notification
   db.ts         schema libSQL, seed, reset, map row -> domain
   auth.ts       bcrypt, JWT cookie, requireAuth/requireAdmin
