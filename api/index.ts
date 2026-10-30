@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
-import type { createApp } from '../server/app'
+import { createApp } from '../server/app'
 
 type App = ReturnType<typeof createApp>
 
@@ -7,30 +7,22 @@ type App = ReturnType<typeof createApp>
  * Single Vercel Function for the API. `vercel.json` rewrites `/api/*`
  * to `/api?path=...`; the Express app reconstructs the original URL.
  *
- * Load the app lazily so missing production configuration produces a
- * readable JSON error instead of Vercel's generic FUNCTION_INVOCATION_FAILED.
+ * Keep the import static so Vercel bundles `server/*`, but create the app
+ * inside the handler so missing configuration returns a readable JSON error.
  */
-let appPromise: Promise<App> | null = null
+let app: App | null = null
 
-function getApp(): Promise<App> {
-  if (!appPromise) {
-    appPromise = import('../server/app')
-      .then(({ createApp: create }) => create())
-      .catch((error: unknown) => {
-        appPromise = null
-        throw error
-      })
-  }
-  return appPromise
+function getApp(): App {
+  if (!app) app = createApp()
+  return app
 }
 
-export default async function handler(
+export default function handler(
   req: IncomingMessage,
   res: ServerResponse,
-): Promise<void> {
+): void {
   try {
-    const app = await getApp()
-    app(
+    getApp()(
       req as unknown as Parameters<App>[0],
       res as unknown as Parameters<App>[1],
     )
