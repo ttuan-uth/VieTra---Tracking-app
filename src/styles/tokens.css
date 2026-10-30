@@ -1,0 +1,39 @@
+:root {
+  /* Port ledger palette */
+  --color-ink: #0b2239;
+  --color-ink-soft: #12304a;
+  --color-accent: #0c7c8a;
+  --color-accent-ink: #0a5f6a;
+  --color-accent-bg: #e8f3f5;
+  --color-page: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f9fb;
+  --color-border: #e1e7ec;
+  --color-border-strong: #c9d5de;
+  --color-text: #0b2239;
+  --color-text-secondary: #4e6377;
+  --color-text-muted: #64798c;
+  --color-success-ink: #12603f;
+  --color-success-bg: #e4f2e9;
+  --color-warning-ink: #7a4a05;
+  --color-warning: #b4761a;
+  --color-warning-bg: #fbf1de;
+  --color-danger-ink: #a32217;
+  --color-danger-bg: #fbe9e7;
+
+  /* transport modes */
+  --color-road: #0c7c8a;
+  --color-ocean: #1f5f8b;
+  --color-air: #6d5ba6;
+
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --radius-control: 6px;
+  --radius-panel: 8px;
+  --rail-width: 68px;
+  --header-height: 56px;
+
+  --shadow-pop: 0 12px 28px -12px rgb(11 34 57 / 28%);
+  --focus-ring: 0 0 0 3px rgb(12 124 138 / 28%);
+}

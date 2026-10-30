@@ -1,0 +1,496 @@
+.page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 28px;
+  background-color: var(--color-page);
+  background-image:
+    linear-gradient(to right, rgb(11 34 57 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(11 34 57 / 4%) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.sheet {
+  width: min(1120px, 100%);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.sheetHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: #fbfcfd;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.brandMark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brandText strong {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brandText span {
+  font-size: 10.5px;
+  color: var(--color-text-muted);
+}
+
+.demoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--color-warning-bg);
+  color: var(--color-warning-ink);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sessionMeta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 322px minmax(0, 1fr);
+}
+
+.access {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface-muted);
+}
+
+.asideHead h2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.asideHead p {
+  margin-top: 4px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.accountList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  text-align: left;
+  transition:
+    border-color 120ms ease,
+    background 120ms ease;
+}
+
+.account:hover {
+  border-color: var(--color-border-strong);
+}
+
+.account:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.accountActive {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+}
+
+.accountTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.accountRole {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+}
+
+.accountActive .accountRole {
+  color: var(--color-accent-ink);
+}
+
+.fillAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-accent-ink);
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.accountName {
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.accountEmail {
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountCompany {
+  font-size: 10.5px;
+  color: var(--color-text-muted);
+}
+
+.scopeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5px;
+}
+
+.scopeTable caption {
+  text-align: left;
+}
+
+.scopeTable thead th {
+  padding: 0 0 5px;
+  border-bottom: 1px solid var(--color-border-strong);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.scopeTable thead th:not(:first-child) {
+  text-align: center;
+}
+
+.scopeTable tbody th {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  text-align: left;
+}
+
+.scopeTable tbody td {
+  width: 58px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-accent-ink);
+  text-align: center;
+}
+
+.scopeTable tbody td svg {
+  vertical-align: middle;
+}
+
+.scopeTable tbody td svg[aria-label='Không'] {
+  color: #9aabb8;
+}
+
+.sessionNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-border-strong);
+  color: var(--color-text-muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sessionNote svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.sessionNote .mono {
+  color: var(--color-text-secondary);
+}
+
+.formPanel {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px 30px;
+}
+
+.formHead h1 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.formHead p {
+  max-width: 520px;
+  margin-top: 6px;
+  color: var(--color-text-secondary);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.form {
+  display: flex;
+  max-width: 430px;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.passwordWrap {
+  position: relative;
+  display: block;
+}
+
+.passwordWrap .input {
+  padding-right: 42px;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.passwordToggle:hover {
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+}
+
+.passwordToggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.formError {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgb(163 34 23 / 20%);
+  border-radius: var(--radius-control);
+  background: var(--color-danger-bg);
+  color: var(--color-danger-ink);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.formError svg {
+  flex: none;
+  margin-top: 1px;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+.submit {
+  min-width: 158px;
+  height: 40px;
+}
+
+.submitMeta {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+
+.modeNote {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.switchButton {
+  display: inline;
+  vertical-align: baseline;
+  font-size: 12px;
+}
+
+.sheetFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 16px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-size: 10px;
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+
+.sheetFoot .mono {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .body {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .formPanel {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 840px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .access {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .accountList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sessionNote {
+    margin-top: 0;
+  }
+
+  .formPanel {
+    padding: 24px 22px 26px;
+  }
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding: 10px;
+  }
+
+  .sheet {
+    border-radius: 6px;
+  }
+
+  .sheetHead {
+    gap: 8px;
+  }
+
+  .sessionMeta {
+    display: none;
+  }
+
+  .brandText span {
+    display: none;
+  }
+
+  .accountList {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .submitMeta {
+    display: none;
+  }
+
+  .formPanel {
+    padding: 20px 16px 22px;
+  }
+
+  .formHead h1 {
+    font-size: 20px;
+  }
+
+  .sheetFoot {
+    display: block;
+  }
+
+  .sheetFoot .mono {
+    display: block;
+    margin-top: 2px;
+  }
+}
