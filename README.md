@@ -214,6 +214,28 @@ Nếu repo chứa thư mục cha và ứng dụng nằm trong `vietra/`, đặt 
 
 Trong mục **Environment Variables**, thêm các biến ở bảng phía trên (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `AUTH_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `DEMO_PASSWORD`) cho cả **Production** và **Preview**, rồi bấm **Deploy**.
 
+##### Điền Environment Variables trên đúng màn hình Vercel
+
+- Ô **Key** đang hiện `EXAMPLE_NAME` chỉ là placeholder; xoá và gõ tên biến thật.
+- Ô **Value** dán giá trị tương ứng; không thêm dấu nháy hoặc khoảng trắng thừa.
+- **Environments** giữ **Production and Preview**. Kiểm tra lại từng dòng sau khi thêm.
+- Biểu tượng **mắt gạch** chỉ ẩn/hiện giá trị trên màn hình. Biểu tượng **ổ khóa** bật **Sensitive**; nên bật cho token và mật khẩu.
+- Bấm **Add More** để thêm dòng mới; bấm **−** để xoá dòng thừa.
+- Sau khi đủ 6 dòng, cuộn xuống cuối trang và bấm **Deploy**. Không cần tìm nút “Add” riêng cho từng dòng.
+
+Có thể bấm **Import .env** và dán 6 dòng sau, thay `...` bằng giá trị thật:
+
+```dotenv
+TURSO_DATABASE_URL=libsql://vietra-...turso.io
+TURSO_AUTH_TOKEN=...
+AUTH_SECRET=...
+ADMIN_EMAIL=admin@vietra.vn
+ADMIN_PASSWORD=...
+DEMO_PASSWORD=...
+```
+
+Sau khi import, kiểm tra không còn `EXAMPLE_NAME`, đủ 6 Key và mỗi dòng chọn **Production and Preview**. Nếu mật khẩu có `#`, `$`, dấu cách hoặc dấu nháy, nhập tay hoặc bọc giá trị trong dấu nháy kép.
+
 Sau khi deploy xong, mở `https://<project>.vercel.app/api/health` để kiểm tra. Nếu báo lỗi thiếu biến, thêm biến rồi vào **Deployments → Redeploy** (biến mới không tự áp dụng cho deployment cũ).
 
 ### Cập nhật code sau khi đã deploy

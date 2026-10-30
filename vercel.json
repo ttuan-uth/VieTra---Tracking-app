@@ -6,8 +6,8 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "^/api/(.+)$",
-      "destination": "/api?path=$1"
+      "source": "/api/:path*",
+      "destination": "/api?path=:path*"
     }
   ],
   "headers": [
